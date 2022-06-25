@@ -1,5 +1,5 @@
 import { loadEnvs } from './tools/envs.tools';
-loadEnvs(`${__dirname}/../envs/.env-${process.env.NODE_ENV}`);
+loadEnvs(`${__dirname}/../envs/.env-${process.env.NODE_ENV || 'development'}`);
 import './server';
 
 process.on('uncaughtException', (error: Error) => {
@@ -8,4 +8,4 @@ process.on('uncaughtException', (error: Error) => {
 
 process.on('unhandledRejection', (reason: any) => {
   console.error(`unhandledRejection ${reason}`);
-});
+}); 
