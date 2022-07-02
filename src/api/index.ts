@@ -29,9 +29,16 @@ const postCandidate = async (req, res) => {
   return res.send(body).status(200);
 };
 
+const postVote = async (req, res) => {
+  const body: { partyNumber: number } = req.body;
+  await queues.vote.add(body);
+  return res.send(body).status(200);
+};
+
 router.get('/', getPing);
 router.post('/log', postLog);
 router.post('/email', postEmail);
 router.post('/candidates', postCandidate);
+router.post('/votes', postVote);
 
 export default router;
